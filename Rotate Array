@@ -1,0 +1,41 @@
+PROBLEM: N = 5, D = 2
+         arr[] = {1,2,3,4,5}
+Output: 3 4 5 1 2
+
+Explanation: 1 2 3 4 5  when rotated by 2 elements, it becomes 3 4 5 1 2.
+
+
+SOLUTION:
+
+void revers(int arr[], int a, int b){
+    while(a<=b){
+        swap(arr[a],arr[b]);
+        a++;
+        b--;
+    }
+}
+void rotateArr(int arr[], int d, int n){
+    revers(arr,0,d-1);                   //Reverse 'd' part
+    revers(arr,d,n-1);                   //Reverse 'n-d' part
+    revers(arr,0,n-1);                   //Reverse whole array
+}
+
+
+
+EXPLAINATION of CONCEPT->
+
+input: [1,2,3,4,5],  d=2, n=5
+      
+      so, we see it as  [1, 2, 3, 4, 5]
+                        <-d-> <-(n-d)->
+                        
+      Now here we reverse 'd' part and then reverse 'n-d' part.
+      Reverse of 'd' part = [2,1]
+      Reverse of 'n-d' part = [5,4,3]
+      
+      Now combine it, and we got  [2,1,5,4,3]
+      
+      Now we rotate the whole array [3,4,5,1,2]  and we got the result.
+      
+      
+      
